@@ -13,4 +13,12 @@ public class Util {
     Util.SCREEN_HEIGHT = context.getResources().getDisplayMetrics().
         heightPixels;
   }
+
+  public static int getSign(float f) {
+    return f == 0 ? (int) f : (int) (f / Math.abs(f));
+  }
+
+  public static int getSign(double d) {
+    return getSign(d);
+  }
 }

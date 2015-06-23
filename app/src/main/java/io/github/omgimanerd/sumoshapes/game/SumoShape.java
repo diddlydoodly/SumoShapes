@@ -2,39 +2,56 @@ package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
 
+import io.github.omgimanerd.sumoshapes.util.Vector;
+
 public class SumoShape {
 
-  private static final float DEFAULT_VELOCITY_MAGNITUDE = 0.5f;
-  private static final float DEFAULT_ROTATION_RATE = 1;
+  private static final int X = 0;
+  private static final int Y = 1;
+  private static final float VELOCITY_MAGNITUDE = 0.5f;
+  private static final float ROTATION_RATE = 1;
+  private static final float COLLISION_START_VELOCITY = 0.1f;
+  private static final float COLLISION_DECELERATION = 0.01f;
 
-  private float[] position_;
-  private float[] velocity_;
-  private float rotationAngle_;
+  private Vector position_;
+  private Vector innateVelocity_;
+  private Vector collisionVelocity_;
   private float rotationRate_;
 
-  public SumoShape(float[] position, float[] velocity, float rotationAngle,
+  public SumoShape(float x, float y,
+                   float vx, float vy,
                    float rotationRate) {
-    position_ = position;
-    velocity_ = velocity;
-    rotationAngle_ = rotationAngle;
-    rotationRate_ = rotationRate;
+    this.position_ = new Vector(x, y);
+    this.innateVelocity_ = new Vector(vx, vy);
+    this.collisionVelocity_ = new Vector(0, 0);
+    this.rotationRate_ = rotationRate;
   }
 
   public void update() {
-    //TODO: look for built in java vector class
     // Innate velocity engine is not compatible with collision caused by
     // another player. We will most likely need another method of storing
     // velocity and acceleration in order to account for the fact that player
     // collision runs independent from player movement.
-    for (int i = 0; i < position_.length; ++i) {
-      this.position_[i] += this.velocity_[i];
+    this.position_.add(this.collisionVelocity_);
+    if (this.rotationRate_ == 0) {
+      this.position_.add(this.innateVelocity_);
+    } else {
+      this.innateVelocity_.addAngle(this.rotationRate_);
     }
-    this.rotationAngle_ += this.rotationRate_;
+
+    if (this.collisionVelocity_.getMag() < COLLISION_DECELERATION) {
+      this.collisionVelocity_.setMag(0);
+    } else {
+      this.collisionVelocity_.setMag(Math.max(0, this.collisionVelocity_
+          .getMag() - COLLISION_DECELERATION));
+    }
   }
 
   public void render(Canvas canvas) {
     canvas.save();
-    canvas.rotate(rotationAngle_, this.position_[0], this.position_[1]);
+    canvas.rotate((float) this.innateVelocity_.getAngle(),
+                  (float) this.position_.x,
+                  (float) this.position_.y);
     //TODO: bitmap image for player drawing
 
     canvas.restore();
@@ -42,21 +59,21 @@ public class SumoShape {
 
   public void setMoving() {
     this.rotationRate_ = 0;
-    this.velocity_[0] = (float) Math.cos(rotationAngle_) *
-        DEFAULT_VELOCITY_MAGNITUDE;
-    this.velocity_[1] = (float) Math.sin(rotationAngle_) *
-        DEFAULT_VELOCITY_MAGNITUDE;
+    this.innateVelocity_.setMag(VELOCITY_MAGNITUDE);
   }
 
   public void setRotatingLeft() {
-    this.velocity_[0] = 0;
-    this.velocity_[1] = 0;
-    this.rotationRate_ = -DEFAULT_ROTATION_RATE;
+    this.rotationRate_ = -ROTATION_RATE;
+    this.innateVelocity_.setMag(0);
   }
 
   public void setRotationRight() {
-    this.velocity_[0] = 0;
-    this.velocity_[1] = 0;
-    this.rotationRate_ = DEFAULT_ROTATION_RATE;
+    this.rotationRate_ = ROTATION_RATE;
+    this.innateVelocity_.setMag(0);
+  }
+
+  public void collide(float angle) {
+    this.collisionVelocity_.setMag(COLLISION_START_VELOCITY);
+    this.collisionVelocity_.setAngle(angle);
   }
 }
