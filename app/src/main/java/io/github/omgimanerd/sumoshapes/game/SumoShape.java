@@ -21,10 +21,10 @@ public class SumoShape {
   public SumoShape(float x, float y,
                    float vx, float vy,
                    float rotationRate) {
-    this.position_ = new Vector(x, y);
-    this.innateVelocity_ = new Vector(vx, vy);
-    this.collisionVelocity_ = new Vector(0, 0);
-    this.rotationRate_ = rotationRate;
+    position_ = new Vector(x, y);
+    innateVelocity_ = new Vector(vx, vy);
+    collisionVelocity_ = new Vector(0, 0);
+    rotationRate_ = rotationRate;
   }
 
   public void update() {
@@ -32,48 +32,48 @@ public class SumoShape {
     // another player. We will most likely need another method of storing
     // velocity and acceleration in order to account for the fact that player
     // collision runs independent from player movement.
-    this.position_.add(this.collisionVelocity_);
-    if (this.rotationRate_ == 0) {
-      this.position_.add(this.innateVelocity_);
+    position_.add(collisionVelocity_);
+    if (rotationRate_ == 0) {
+      position_.add(innateVelocity_);
     } else {
-      this.innateVelocity_.addAngle(this.rotationRate_);
+      innateVelocity_.addAngle(rotationRate_);
     }
 
     if (this.collisionVelocity_.getMag() < COLLISION_DECELERATION) {
-      this.collisionVelocity_.setMag(0);
+      collisionVelocity_.setMag(0);
     } else {
-      this.collisionVelocity_.setMag(Math.max(0, this.collisionVelocity_
+      collisionVelocity_.setMag(Math.max(0, collisionVelocity_
           .getMag() - COLLISION_DECELERATION));
     }
   }
 
   public void render(Canvas canvas) {
     canvas.save();
-    canvas.rotate((float) this.innateVelocity_.getAngle(),
-                  (float) this.position_.x,
-                  (float) this.position_.y);
+    canvas.rotate((float) innateVelocity_.getAngle(),
+                  (float) position_.x,
+                  (float) position_.y);
     //TODO: bitmap image for player drawing
 
     canvas.restore();
   }
 
   public void setMoving() {
-    this.rotationRate_ = 0;
-    this.innateVelocity_.setMag(VELOCITY_MAGNITUDE);
+    rotationRate_ = 0;
+    innateVelocity_.setMag(VELOCITY_MAGNITUDE);
   }
 
   public void setRotatingLeft() {
-    this.rotationRate_ = -ROTATION_RATE;
-    this.innateVelocity_.setMag(0);
+    rotationRate_ = -ROTATION_RATE;
+    innateVelocity_.setMag(0);
   }
 
   public void setRotationRight() {
-    this.rotationRate_ = ROTATION_RATE;
-    this.innateVelocity_.setMag(0);
+    rotationRate_ = ROTATION_RATE;
+    innateVelocity_.setMag(0);
   }
 
   public void collide(float angle) {
-    this.collisionVelocity_.setMag(COLLISION_START_VELOCITY);
-    this.collisionVelocity_.setAngle(angle);
+    collisionVelocity_.setMag(COLLISION_START_VELOCITY);
+    collisionVelocity_.setAngle(angle);
   }
 }
