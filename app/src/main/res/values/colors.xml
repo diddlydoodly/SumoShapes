@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <color name="sumoshape_direction_indicator_color">#143E05</color>
+  <color name="sumoshape_red">#FF0000</color>
+  <color name="sumoshape_blue">#0000FF</color>
 </resources>

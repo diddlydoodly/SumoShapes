@@ -3,7 +3,6 @@ package io.github.omgimanerd.sumoshapes.customviews;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
-import android.view.MotionEvent;
 import android.view.View;
 
 import io.github.omgimanerd.sumoshapes.game.Game;
@@ -30,12 +29,12 @@ public class GameView extends View {
       game_.update();
       lastUpdateTime_ = currentTimeMillis();
     }
-    game_.render();
+    game_.render(canvas);
 
     invalidate();
   }
 
-  public boolean onTouchEvent(MotionEvent event) {
-    return super.onTouchEvent(event);
+  public Game getGame() {
+    return this.game_;
   }
 }

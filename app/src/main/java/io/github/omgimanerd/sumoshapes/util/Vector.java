@@ -53,11 +53,15 @@ public class Vector {
     y -= v.y;
   }
 
-  public double getDistancedSquare(Vector v) {
+  public double getDistancedSquared(Vector v) {
     return (v.x - x) * (v.x - x) + (v.y - y) * (v.y - y);
   }
 
   public double getDistance(Vector v) {
-    return Math.sqrt(getDistancedSquare(v));
+    return Math.sqrt(getDistancedSquared(v));
+  }
+
+  public String toString() {
+    return x + " " + y + " " + angle;
   }
 }

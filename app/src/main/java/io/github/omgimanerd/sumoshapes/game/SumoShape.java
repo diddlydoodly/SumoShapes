@@ -1,21 +1,23 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
+import io.github.omgimanerd.sumoshapes.util.Util;
 import io.github.omgimanerd.sumoshapes.util.Vector;
 
 public class SumoShape {
 
-  private static final float VELOCITY_MAGNITUDE = 0.5f;
-  private static final float ROTATION_RATE = 1;
-  private static final float COLLISION_START_VELOCITY = 0.1f;
+  private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 20;
+  private static final float ROTATION_RATE = 0.001f;
+  private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 10;
   private static final float COLLISION_DECELERATION = 0.01f;
 
-  private static final int SIZE = 10;
-  private static final int INDICATOR_OFFSET = 6;
-  private static final int INDICATOR_SIZE = 2;
+  private static final int SIZE = Util.SCREEN_WIDTH / 20;
+  private static final int INDICATOR_OFFSET = SIZE * 3 / 4;
+  private static final int INDICATOR_SIZE = SIZE / 10;
 
   private Vector position_;
   private Vector innateVelocity_;
@@ -24,6 +26,11 @@ public class SumoShape {
 
   private Paint directionIndicatorPaint_;
   private Paint bodyPaint_;
+
+  public SumoShape(float x, float y, float startAngle, int bodyColor) {
+    this(x, y, 0, 0, 0, bodyColor);
+    this.innateVelocity_.setAngle(startAngle);
+  }
 
   public SumoShape(float x, float y,
                    float vx, float vy,
@@ -69,7 +76,7 @@ public class SumoShape {
     );
   }
 
-  public void setMoving() {
+  public void setForward() {
     rotationRate_ = 0;
     innateVelocity_.setMag(VELOCITY_MAGNITUDE);
   }
@@ -84,8 +91,23 @@ public class SumoShape {
     innateVelocity_.setMag(0);
   }
 
-  public void collide(float angle) {
+  public boolean isCollided(SumoShape other) {
+    return this.position_.getDistancedSquared(other.getPosition()) <= (4 *
+        SIZE * SIZE);
+  }
+
+  public void collide(SumoShape other) {
     collisionVelocity_.setMag(COLLISION_START_VELOCITY);
-    collisionVelocity_.setAngle(angle);
+    collisionVelocity_.setAngle(other.getVelocity().getAngle());
+    other.collisionVelocity_.setMag(COLLISION_START_VELOCITY);
+    other.collisionVelocity_.setAngle(innateVelocity_.getAngle());
+  }
+
+  public Vector getPosition() {
+    return position_;
+  }
+
+  public Vector getVelocity() {
+    return innateVelocity_;
   }
 }
