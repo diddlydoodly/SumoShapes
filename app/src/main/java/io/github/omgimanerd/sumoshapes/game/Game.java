@@ -37,6 +37,7 @@ public class Game {
   }
 
   public void render(Canvas canvas) {
+    platform_.render(canvas);
     player1_.render(canvas);
     player2_.render(canvas);
   }
