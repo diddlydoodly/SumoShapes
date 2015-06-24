@@ -1,8 +1,6 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
-import android.util.Log;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
 import io.github.omgimanerd.sumoshapes.util.Util;
@@ -23,6 +21,9 @@ public class Game {
   public void update() {
     player1_.update();
     player2_.update();
+    if (player1_.isCollided(player2_)) {
+      player1_.collide(player2_);
+    }
   }
 
   public void render(Canvas canvas) {

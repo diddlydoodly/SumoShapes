@@ -2,6 +2,7 @@ package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
 import io.github.omgimanerd.sumoshapes.util.Util;
@@ -9,10 +10,10 @@ import io.github.omgimanerd.sumoshapes.util.Vector;
 
 public class SumoShape {
 
-  private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 60;
-  private static final float ROTATION_RATE = 0.1f;
-  private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 40;
-  private static final float COLLISION_DECELERATION = 0.01f;
+  private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 60f;
+  private static final float ROTATION_RATE = 0.15f;
+  private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 80f;
+  private static final float COLLISION_DECELERATION = Util.SCREEN_WIDTH / 4000f;
 
   private static final int SIZE = Util.SCREEN_WIDTH / 20;
   private static final int INDICATOR_OFFSET = SIZE * 3 / 4;
@@ -61,6 +62,8 @@ public class SumoShape {
       collisionVelocity_.setMag(Math.max(0, collisionVelocity_
           .getMag() - COLLISION_DECELERATION));
     }
+    Log.d("decel", "" + COLLISION_DECELERATION);
+
   }
 
   public void render(Canvas canvas) {

@@ -13,11 +13,4 @@ public class Util {
     Util.SCREEN_HEIGHT = context.getResources().getDisplayMetrics().
         heightPixels;
   }
-
-  public static double normalizeAngle(double angle) {
-    while (angle < 0) {
-      angle += 2 * Math.PI;
-    }
-    return angle % (2 * Math.PI);
-  }
 }

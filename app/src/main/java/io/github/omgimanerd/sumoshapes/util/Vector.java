@@ -19,9 +19,22 @@ public class Vector {
     return this.angle;
   }
 
+  /**
+   * Internal helper method to normalize angles to the range of 0 to 2 * PI,
+   * exclusive of upper bound.
+   * @param angle
+   * @return
+   */
+  private static double normalizeAngle(double angle) {
+    while (angle < 0) {
+      angle += 2 * Math.PI;
+    }
+    return angle % (2 * Math.PI);
+  }
+
   public void setAngle(double angle) {
     double mag = this.getMag();
-    this.angle = Util.normalizeAngle(angle);
+    this.angle = normalizeAngle(angle);
     x = mag * Math.cos(this.angle);
     y = mag * Math.sin(this.angle);
   }
