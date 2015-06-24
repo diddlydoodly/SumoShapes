@@ -1,7 +1,7 @@
 package io.github.omgimanerd.sumoshapes.util;
 
 /**
- * Custom Vector class for 2D
+ * Custom Vector class for 2D, can work as a standalone.
  */
 public class Vector {
 
@@ -17,6 +17,10 @@ public class Vector {
 
   public double getAngle() {
     return this.angle;
+  }
+
+  public static double getAngleBetween(Vector v1, Vector v2) {
+    return Math.atan2(v2.y - v1.y, v2.x - v1.x);
   }
 
   /**
@@ -64,6 +68,11 @@ public class Vector {
   public void sub(Vector v) {
     x -= v.x;
     y -= v.y;
+  }
+
+  public void set (Vector v) {
+    x = v.x;
+    y = v.y;
   }
 
   public double getDistancedSquared(Vector v) {

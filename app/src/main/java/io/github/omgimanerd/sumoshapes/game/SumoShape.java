@@ -12,7 +12,7 @@ public class SumoShape {
   private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 60f;
   private static final float ROTATION_RATE = 0.15f;
   private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 80f;
-  private static final float COLLISION_DECELERATION = Util.SCREEN_WIDTH / 4000f;
+  private static final float COLLISION_DECELERATION = Util.SCREEN_WIDTH / 3800f;
 
   private static final int SIZE = Util.SCREEN_WIDTH / 20;
   private static final int INDICATOR_OFFSET = SIZE * 2 / 3;
@@ -25,11 +25,6 @@ public class SumoShape {
 
   private Paint directionIndicatorPaint_;
   private Paint bodyPaint_;
-
-  public SumoShape(float x, float y, float startAngle, int bodyColor) {
-    this(x, y, 0, 0, 0, bodyColor);
-    this.innateVelocity_.setAngle(startAngle);
-  }
 
   public SumoShape(float x, float y,
                    float vx, float vy,
@@ -45,6 +40,11 @@ public class SumoShape {
         CustomResources.SUMOSHAPE_DIRECTION_INDICATOR_COLOR);
     bodyPaint_ = new Paint();
     bodyPaint_.setColor(bodyColor);
+  }
+
+  public SumoShape(float x, float y, float startAngle, int bodyColor) {
+    this(x, y, 0, 0, 0, bodyColor);
+    this.innateVelocity_.setAngle(startAngle);
   }
 
   public void update() {
@@ -75,6 +75,12 @@ public class SumoShape {
     );
   }
 
+  public void respawn(Vector spawnPoint) {
+    rotationRate_ = 0;
+    innateVelocity_.setMag(0);
+    this.position_.set(spawnPoint);
+  }
+
   public void setForward() {
     rotationRate_ = 0;
     innateVelocity_.setMag(VELOCITY_MAGNITUDE);
@@ -97,9 +103,11 @@ public class SumoShape {
 
   public void collide(SumoShape other) {
     collisionVelocity_.setMag(COLLISION_START_VELOCITY);
-    collisionVelocity_.setAngle(other.getVelocity().getAngle());
+    collisionVelocity_.setAngle(
+        Vector.getAngleBetween(other.getPosition(), getPosition()));
     other.collisionVelocity_.setMag(COLLISION_START_VELOCITY);
-    other.collisionVelocity_.setAngle(innateVelocity_.getAngle());
+    other.collisionVelocity_.setAngle(
+        Vector.getAngleBetween(getPosition(), other.getPosition()));
   }
 
   public Vector getPosition() {

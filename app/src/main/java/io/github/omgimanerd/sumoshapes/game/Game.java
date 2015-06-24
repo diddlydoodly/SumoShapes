@@ -1,23 +1,31 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
-import android.util.Log;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
 import io.github.omgimanerd.sumoshapes.util.Util;
+import io.github.omgimanerd.sumoshapes.util.Vector;
 
 public class Game {
+
+  private static int MAX_SCORE = 10;
 
   private SumoPlatform platform_;
   private SumoShape player1_;
   private SumoShape player2_;
+  private int player1Score_;
+  private int player2Score_;
 
   public Game() {
     platform_ = new SumoPlatform(Util.SCREEN_WIDTH, Util.SCREEN_HEIGHT);
-    player1_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT / 4,
-                             90, CustomResources.SUMOSHAPE_BLUE);
-    player2_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT * 3 / 4,
-                             270, CustomResources.SUMOSHAPE_RED);
+    player1_ = new SumoShape(
+        Util.SCREEN_WIDTH / 2.0f, Util.SCREEN_HEIGHT / 4.0f,
+        (float) (Math.PI / 2.0), CustomResources.SUMOSHAPE_BLUE);
+    player2_ = new SumoShape(
+        Util.SCREEN_WIDTH / 2.0f, Util.SCREEN_HEIGHT * 3.0f / 4.0f,
+        (float) (Math.PI * 3.0 / 2.0), CustomResources.SUMOSHAPE_RED);
+    player1Score_ = 0;
+    player2Score_ = 0;
   }
 
   public void update() {
@@ -28,11 +36,11 @@ public class Game {
     }
 
     if (platform_.isOut(player1_)) {
-      // player 1 loses
-      Log.d("lost", "player 1");
+      player1_.respawn(getPlayerRespawnPoint(player2_));
+      player2Score_++;
     } else if (platform_.isOut(player2_)) {
-      // player 2 loses
-      Log.d("lost", "player 2");
+      player2_.respawn(getPlayerRespawnPoint(player1_));
+      player1Score_++;
     }
   }
 
@@ -40,6 +48,16 @@ public class Game {
     platform_.render(canvas);
     player1_.render(canvas);
     player2_.render(canvas);
+  }
+
+  public Vector getPlayerRespawnPoint(SumoShape otherPlayer) {
+    if (otherPlayer.getPosition().y < Util.SCREEN_HEIGHT / 2) {
+      return new Vector(Util.SCREEN_WIDTH / 2.0,
+                        Util.SCREEN_HEIGHT * 3.0 / 4.0);
+    } else {
+      return new Vector(Util.SCREEN_WIDTH / 2.0,
+                        Util.SCREEN_HEIGHT / 4.0);
+    }
   }
 
   public SumoShape getPlayer1() {
