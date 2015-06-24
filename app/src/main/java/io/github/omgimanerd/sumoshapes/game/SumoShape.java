@@ -16,8 +16,8 @@ public class SumoShape {
   private static final float COLLISION_DECELERATION = Util.SCREEN_WIDTH / 4000f;
 
   private static final int SIZE = Util.SCREEN_WIDTH / 20;
-  private static final int INDICATOR_OFFSET = SIZE * 3 / 4;
-  private static final int INDICATOR_SIZE = 10;
+  private static final int INDICATOR_OFFSET = SIZE * 2 / 3;
+  private static final int INDICATOR_SIZE = SIZE / 4;
 
   private Vector position_;
   private Vector innateVelocity_;
