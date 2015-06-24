@@ -12,10 +12,12 @@ public class SumoPlatform {
   private Paint platformPaint_;
 
   public SumoPlatform(int screenWidth, int screenHeight) {
-    float screenPadding = screenWidth / 25f;
+    float screenPadding = CustomResources.SUMOPLATFORM_VERTICAL_PADDING;
     platform_ = new RectF(
-        screenPadding, screenPadding,
-        screenWidth - screenPadding, screenHeight - screenPadding);
+        CustomResources.SUMOPLATFORM_HORIZONTAL_PADDING,
+        CustomResources.SUMOPLATFORM_VERTICAL_PADDING,
+        screenWidth - CustomResources.SUMOPLATFORM_HORIZONTAL_PADDING,
+        screenHeight - CustomResources.SUMOPLATFORM_VERTICAL_PADDING);
     platformPaint_ = new Paint();
     platformPaint_.setColor(CustomResources.SUMOPLATFORM_COLOR);
   }
@@ -29,7 +31,7 @@ public class SumoPlatform {
   }
 
   public boolean isOut(SumoShape shape) {
-    return platform_.contains((float) shape.getPosition().x,
-                              (float) shape.getPosition().y);
+    return !platform_.contains((float) shape.getPosition().x,
+                               (float) shape.getPosition().y);
   }
 }

@@ -19,7 +19,7 @@
       android:padding="@dimen/player_control_button_padding"/>
 
   <ImageButton
-      android:layout_width="@dimen/player_control_button_width"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/player_control_button_height"
       android:id="@+id/p1left"
       android:layout_alignParentTop="true"
@@ -33,7 +33,7 @@
       android:padding="@dimen/player_control_button_padding"/>
 
   <ImageButton
-      android:layout_width="@dimen/player_control_button_width"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/player_control_button_height"
       android:id="@+id/p1right"
       android:layout_alignParentTop="true"
@@ -59,7 +59,7 @@
       android:padding="@dimen/player_control_button_padding"/>
 
   <ImageButton
-      android:layout_width="@dimen/player_control_button_width"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/player_control_button_height"
       android:id="@+id/p2right"
       android:layout_alignParentBottom="true"
@@ -72,7 +72,7 @@
       android:padding="@dimen/player_control_button_padding"/>
 
   <ImageButton
-      android:layout_width="@dimen/player_control_button_width"
+      android:layout_width="match_parent"
       android:layout_height="@dimen/player_control_button_height"
       android:id="@+id/p2left"
       android:layout_alignBottom="@+id/p2forward"
