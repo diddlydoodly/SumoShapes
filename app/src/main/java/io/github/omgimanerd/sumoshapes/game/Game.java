@@ -12,6 +12,7 @@ public class Game {
   private SumoShape player2_;
 
   public Game() {
+    platform_ = new SumoPlatform(Util.SCREEN_WIDTH, Util.SCREEN_HEIGHT);
     player1_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT / 4,
                              90, CustomResources.SUMOSHAPE_BLUE);
     player2_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT * 3 / 4,
