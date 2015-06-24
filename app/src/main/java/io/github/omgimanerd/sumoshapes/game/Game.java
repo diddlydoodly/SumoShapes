@@ -1,6 +1,7 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
+import android.util.Log;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
 import io.github.omgimanerd.sumoshapes.util.Util;
@@ -24,6 +25,14 @@ public class Game {
     player2_.update();
     if (player1_.isCollided(player2_)) {
       player1_.collide(player2_);
+    }
+
+    if (platform_.isOut(player1_)) {
+      // player 1 loses
+      Log.d("lost", "player 1");
+    } else if (platform_.isOut(player2_)) {
+      // player 2 loses
+      Log.d("lost", "player 2");
     }
   }
 

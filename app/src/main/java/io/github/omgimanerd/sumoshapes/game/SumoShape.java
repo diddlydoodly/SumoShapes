@@ -62,8 +62,6 @@ public class SumoShape {
       collisionVelocity_.setMag(Math.max(0, collisionVelocity_
           .getMag() - COLLISION_DECELERATION));
     }
-    Log.d("decel", "" + COLLISION_DECELERATION);
-
   }
 
   public void render(Canvas canvas) {

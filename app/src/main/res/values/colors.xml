@@ -3,4 +3,5 @@
   <color name="sumoshape_direction_indicator_color">#143E05</color>
   <color name="sumoshape_red">#FF0000</color>
   <color name="sumoshape_blue">#0000FF</color>
+  <color name="sumoplatform_color">#ff7e7b7d</color>
 </resources>

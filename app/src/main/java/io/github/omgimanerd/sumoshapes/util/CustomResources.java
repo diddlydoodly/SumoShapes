@@ -11,6 +11,7 @@ public class CustomResources {
   public static int SUMOSHAPE_DIRECTION_INDICATOR_COLOR;
   public static int SUMOSHAPE_RED;
   public static int SUMOSHAPE_BLUE;
+  public static int SUMOPLATFORM_COLOR;
 
   public static void init(Context context) {
     res_ = context.getResources();
@@ -19,5 +20,6 @@ public class CustomResources {
         R.color.sumoshape_direction_indicator_color);
     SUMOSHAPE_RED = res_.getColor(R.color.sumoshape_red);
     SUMOSHAPE_BLUE = res_.getColor(R.color.sumoshape_blue);
+    SUMOPLATFORM_COLOR = res_.getColor(R.color.sumoplatform_color);
   }
 }
