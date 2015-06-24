@@ -5,6 +5,73 @@
                 tools:context=".GameActivity"
     >
 
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p1forward"
+      android:layout_alignParentTop="true"
+      android:layout_centerHorizontal="true"
+      android:src="@drawable/fd_arrow"
+      android:contentDescription="@string/fd_arrow"
+      android:rotation="180"
+      android:scaleType="fitCenter"/>
+
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p1left"
+      android:layout_alignParentTop="true"
+      android:layout_toRightOf="@+id/p1forward"
+      android:layout_toEndOf="@+id/p1forward"
+      android:src="@drawable/left_arrow"
+      android:contentDescription="@string/left_arrow"
+      android:rotation="180"
+      android:scaleType="fitCenter"/>
+
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p1right"
+      android:layout_alignParentTop="true"
+      android:layout_toLeftOf="@+id/p1forward"
+      android:layout_toStartOf="@+id/p1forward"
+      android:scaleType="fitCenter"
+      android:src="@drawable/right_arrow"
+      android:contentDescription="@string/right_arrow"
+      android:rotation="180"/>
+
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p2forward"
+      android:layout_alignParentBottom="true"
+      android:layout_centerHorizontal="true"
+      android:src="@drawable/fd_arrow"
+      android:scaleType="fitCenter"
+      android:contentDescription="@string/fd_arrow"/>
+
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p2right"
+      android:layout_alignParentBottom="true"
+      android:layout_toRightOf="@+id/p2forward"
+      android:layout_toEndOf="@+id/p2forward"
+      android:scaleType="fitCenter"
+      android:src="@drawable/right_arrow"
+      android:contentDescription="@string/right_arrow"/>
+
+  <ImageButton
+      android:layout_width="@dimen/player_control_button_width"
+      android:layout_height="@dimen/player_control_button_height"
+      android:id="@+id/p2left"
+      android:layout_alignBottom="@+id/p2forward"
+      android:layout_toLeftOf="@+id/p2forward"
+      android:layout_toStartOf="@+id/p2forward"
+      android:scaleType="fitCenter"
+      android:src="@drawable/left_arrow"
+      android:contentDescription="@string/left_arrow"/>
+
   <io.github.omgimanerd.sumoshapes.customviews.GameView
       android:layout_width="fill_parent"
       android:layout_height="fill_parent"/>

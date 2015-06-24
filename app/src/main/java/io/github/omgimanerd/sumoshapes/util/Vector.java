@@ -1,26 +1,29 @@
 package io.github.omgimanerd.sumoshapes.util;
 
 /**
- * Custom Vector class for storing 2D positions
+ * Custom Vector class for 2D
  */
 public class Vector {
 
   public double x;
   public double y;
+  public double angle;
 
   public Vector(double x, double y) {
     this.x = x;
     this.y = y;
+    this.angle = Math.atan2(y, x);
   }
 
   public double getAngle() {
-    return Math.atan2(this.y, this.x);
+    return this.angle;
   }
 
   public void setAngle(double angle) {
     double mag = this.getMag();
     x = mag * Math.cos(angle);
     y = mag * Math.sin(angle);
+    this.angle = angle;
   }
 
   public void addAngle(double amount) {
@@ -36,7 +39,6 @@ public class Vector {
   }
 
   public void setMag(double mag) {
-    double angle = this.getAngle();
     x = mag * Math.cos(angle);
     y = mag * Math.sin(angle);
   }
@@ -49,5 +51,13 @@ public class Vector {
   public void sub(Vector v) {
     x -= v.x;
     y -= v.y;
+  }
+
+  public double getDistancedSquare(Vector v) {
+    return (v.x - x) * (v.x - x) + (v.y - y) * (v.y - y);
+  }
+
+  public double getDistance(Vector v) {
+    return Math.sqrt(getDistancedSquare(v));
   }
 }

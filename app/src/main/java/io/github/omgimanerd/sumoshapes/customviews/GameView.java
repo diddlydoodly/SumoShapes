@@ -12,6 +12,8 @@ import static java.lang.System.currentTimeMillis;
 
 public class GameView extends View {
 
+  private static final int FPS = 60;
+
   private Game game_;
   private long lastUpdateTime_;
 
@@ -19,12 +21,15 @@ public class GameView extends View {
     super(context, attrs);
 
     game_ = new Game();
-    lastUpdateTime_ = currentTimeMillis();
+    lastUpdateTime_ = 0;
   }
 
   @Override
   public void onDraw(Canvas canvas) {
-    game_.update();
+    if (currentTimeMillis() > lastUpdateTime_ + (1000.0 / FPS)) {
+      game_.update();
+      lastUpdateTime_ = currentTimeMillis();
+    }
     game_.render();
 
     invalidate();

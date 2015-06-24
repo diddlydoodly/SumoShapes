@@ -22,10 +22,5 @@ public class GameActivity extends ActionBarActivity {
                          WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
     setContentView(R.layout.activity_game);
-
-    init();
-  }
-
-  protected void init() {
   }
 }
