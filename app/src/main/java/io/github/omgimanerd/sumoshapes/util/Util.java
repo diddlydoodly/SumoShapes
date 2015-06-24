@@ -14,11 +14,10 @@ public class Util {
         heightPixels;
   }
 
-  public static int getSign(float f) {
-    return f == 0 ? (int) f : (int) (f / Math.abs(f));
-  }
-
-  public static int getSign(double d) {
-    return getSign(d);
+  public static double normalizeAngle(double angle) {
+    while (angle < 0) {
+      angle += 2 * Math.PI;
+    }
+    return angle % (2 * Math.PI);
   }
 }

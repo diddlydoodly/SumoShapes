@@ -12,7 +12,7 @@ public class CustomResources {
   public static int SUMOSHAPE_RED;
   public static int SUMOSHAPE_BLUE;
 
-  public void init(Context context) {
+  public static void init(Context context) {
     res_ = context.getResources();
 
     SUMOSHAPE_DIRECTION_INDICATOR_COLOR = res_.getColor(

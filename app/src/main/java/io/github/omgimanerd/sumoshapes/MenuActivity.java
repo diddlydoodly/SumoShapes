@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.github.omgimanerd.sumoshapes.util.CustomResources;
 import io.github.omgimanerd.sumoshapes.util.Util;
 
 public class MenuActivity extends Activity {
@@ -22,6 +23,7 @@ public class MenuActivity extends Activity {
   }
 
   protected void init() {
+    CustomResources.init(this);
     Util.init(this);
 
     startButton_ = (Button) findViewById(R.id.startButton);

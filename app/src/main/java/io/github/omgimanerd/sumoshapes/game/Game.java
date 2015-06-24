@@ -1,6 +1,7 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.util.Log;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
@@ -14,9 +15,9 @@ public class Game {
 
   public Game() {
     player1_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT / 4,
-                             0, CustomResources.SUMOSHAPE_BLUE);
+                             90, CustomResources.SUMOSHAPE_BLUE);
     player2_ = new SumoShape(Util.SCREEN_WIDTH / 2, Util.SCREEN_HEIGHT * 3 / 4,
-                             180, CustomResources.SUMOSHAPE_RED);
+                             270, CustomResources.SUMOSHAPE_RED);
   }
 
   public void update() {

@@ -1,7 +1,6 @@
 package io.github.omgimanerd.sumoshapes.game;
 
 import android.graphics.Canvas;
-import android.graphics.Color;
 import android.graphics.Paint;
 
 import io.github.omgimanerd.sumoshapes.util.CustomResources;
@@ -10,14 +9,14 @@ import io.github.omgimanerd.sumoshapes.util.Vector;
 
 public class SumoShape {
 
-  private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 20;
-  private static final float ROTATION_RATE = 0.001f;
-  private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 10;
+  private static final float VELOCITY_MAGNITUDE = Util.SCREEN_WIDTH / 60;
+  private static final float ROTATION_RATE = 0.1f;
+  private static final float COLLISION_START_VELOCITY = Util.SCREEN_WIDTH / 40;
   private static final float COLLISION_DECELERATION = 0.01f;
 
   private static final int SIZE = Util.SCREEN_WIDTH / 20;
   private static final int INDICATOR_OFFSET = SIZE * 3 / 4;
-  private static final int INDICATOR_SIZE = SIZE / 10;
+  private static final int INDICATOR_SIZE = 10;
 
   private Vector position_;
   private Vector innateVelocity_;

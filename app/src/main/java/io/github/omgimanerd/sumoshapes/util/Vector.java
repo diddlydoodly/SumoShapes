@@ -21,9 +21,9 @@ public class Vector {
 
   public void setAngle(double angle) {
     double mag = this.getMag();
-    x = mag * Math.cos(angle);
-    y = mag * Math.sin(angle);
-    this.angle = angle;
+    this.angle = Util.normalizeAngle(angle);
+    x = mag * Math.cos(this.angle);
+    y = mag * Math.sin(this.angle);
   }
 
   public void addAngle(double amount) {
@@ -45,7 +45,7 @@ public class Vector {
 
   public void add(Vector v) {
     x += v.x;
-    x += v.y;
+    y += v.y;
   }
 
   public void sub(Vector v) {
