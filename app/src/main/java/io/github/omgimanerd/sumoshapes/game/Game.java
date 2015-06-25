@@ -13,6 +13,7 @@ public class Game {
   private SumoPlatform platform_;
   private SumoShape player1_;
   private SumoShape player2_;
+
   private int player1Score_;
   private int player2Score_;
 
@@ -36,10 +37,12 @@ public class Game {
     }
 
     if (platform_.isOut(player1_)) {
-      player1_.respawn(getPlayerRespawnPoint(player2_));
+      player1_.respawn(getPlayerRespawnPoint(player2_),
+                       getPlayerRespawnAngle(player2_));
       player2Score_++;
     } else if (platform_.isOut(player2_)) {
-      player2_.respawn(getPlayerRespawnPoint(player1_));
+      player2_.respawn(getPlayerRespawnPoint(player1_),
+                       getPlayerRespawnAngle(player1_));
       player1Score_++;
     }
   }
@@ -60,11 +63,27 @@ public class Game {
     }
   }
 
+  public double getPlayerRespawnAngle(SumoShape otherPlayer) {
+    if (otherPlayer.getPosition().y < Util.SCREEN_HEIGHT / 2) {
+      return 3.0 * Math.PI / 2.0;
+    } else {
+      return Math.PI / 2.0;
+    }
+  }
+
   public SumoShape getPlayer1() {
     return player1_;
   }
 
+  public int getPlayer1Score() {
+    return player1Score_;
+  }
+
   public SumoShape getPlayer2() {
     return player2_;
+  }
+
+  public int getPlayer2Score() {
+    return player2Score_;
   }
 }

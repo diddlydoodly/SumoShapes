@@ -75,9 +75,11 @@ public class SumoShape {
     );
   }
 
-  public void respawn(Vector spawnPoint) {
+  public void respawn(Vector spawnPoint, double angle) {
     rotationRate_ = 0;
     innateVelocity_.setMag(0);
+    innateVelocity_.setAngle(angle);
+    collisionVelocity_.setMag(0);
     this.position_.set(spawnPoint);
   }
 
@@ -112,9 +114,5 @@ public class SumoShape {
 
   public Vector getPosition() {
     return position_;
-  }
-
-  public Vector getVelocity() {
-    return innateVelocity_;
   }
 }
