@@ -9,12 +9,13 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentTop="true"
-      android:layout_centerHorizontal="true">
+      android:layout_centerHorizontal="true"
+      android:id="@+id/p1controls">
 
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p1right"
         android:scaleType="fitCenter"
         android:src="@drawable/right_arrow"
@@ -26,7 +27,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p1forward"
         android:scaleType="fitCenter"
         android:src="@drawable/fd_arrow"
@@ -38,7 +39,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p1left"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
@@ -49,17 +50,26 @@
 
   </LinearLayout>
 
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/p1score"
+      android:layout_below="@+id/p1controls"
+      android:layout_centerHorizontal="true"
+      />
+
   <LinearLayout
       android:orientation="horizontal"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_alignParentBottom="true"
-      android:layout_centerHorizontal="true">
+      android:layout_centerHorizontal="true"
+      android:id="@+id/p2controls">
 
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p2left"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
@@ -70,7 +80,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p2forward"
         android:scaleType="fitCenter"
         android:src="@drawable/fd_arrow"
@@ -81,7 +91,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="0.33"
+        android:layout_weight="@dimen/player_control_button_weight"
         android:id="@+id/p2right"
         android:scaleType="fitCenter"
         android:src="@drawable/right_arrow"
@@ -90,6 +100,14 @@
         android:padding="@dimen/player_control_button_padding"/>
 
   </LinearLayout>
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:id="@+id/p2score"
+      android:layout_above="@+id/p2controls"
+      android:layout_centerHorizontal="true"
+      />
 
   <io.github.omgimanerd.sumoshapes.customviews.GameView
       android:layout_width="fill_parent"
