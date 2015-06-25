@@ -15,7 +15,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p1right"
         android:scaleType="fitCenter"
         android:src="@drawable/right_arrow"
@@ -27,7 +27,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p1forward"
         android:scaleType="fitCenter"
         android:src="@drawable/fd_arrow"
@@ -39,7 +39,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p1left"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
@@ -69,7 +69,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p2left"
         android:scaleType="fitCenter"
         android:src="@drawable/left_arrow"
@@ -80,7 +80,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p2forward"
         android:scaleType="fitCenter"
         android:src="@drawable/fd_arrow"
@@ -91,7 +91,7 @@
     <ImageButton
         android:layout_width="@dimen/player_control_button_width"
         android:layout_height="@dimen/player_control_button_height"
-        android:layout_weight="@dimen/player_control_button_weight"
+        android:layout_weight="0.33"
         android:id="@+id/p2right"
         android:scaleType="fitCenter"
         android:src="@drawable/right_arrow"
