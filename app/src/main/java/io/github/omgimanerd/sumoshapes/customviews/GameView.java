@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import io.github.omgimanerd.sumoshapes.game.Game;
+import io.github.omgimanerd.sumoshapes.util.CustomResources;
 
 import static java.lang.System.currentTimeMillis;
 
@@ -35,10 +36,10 @@ public class GameView extends View {
     game_.render(canvas);
 
     if (p1score_ != null) {
-      p1score_.setText("" + game_.getPlayer1Score());
+      p1score_.setText(CustomResources.SCORE + game_.getPlayer1Score());
     }
     if (p2score_ != null) {
-      p2score_.setText("" + game_.getPlayer2Score());
+      p2score_.setText(CustomResources.SCORE + game_.getPlayer2Score());
     }
 
     invalidate();

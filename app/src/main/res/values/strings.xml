@@ -4,4 +4,5 @@
   <string name="fd_arrow">fd_arrow</string>
   <string name="left_arrow">left_arrow</string>
   <string name="right_arrow">right_arrow</string>
+  <string name="score">Score:</string>
 </resources>

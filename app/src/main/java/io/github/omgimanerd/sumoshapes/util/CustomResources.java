@@ -14,6 +14,7 @@ public class CustomResources {
   public static int SUMOPLATFORM_COLOR;
   public static float SUMOPLATFORM_HORIZONTAL_PADDING;
   public static float SUMOPLATFORM_VERTICAL_PADDING;
+  public static String SCORE;
 
   public static void init(Context context) {
     res_ = context.getResources();
@@ -27,5 +28,6 @@ public class CustomResources {
         R.dimen.platform_horizontal_padding);
     SUMOPLATFORM_VERTICAL_PADDING = res_.getDimension(
         R.dimen.platform_vertical_padding);
+    SCORE = res_.getString(R.string.score);
   }
 }

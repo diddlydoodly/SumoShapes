@@ -56,7 +56,9 @@
       android:id="@+id/p1score"
       android:layout_below="@+id/p1controls"
       android:layout_centerHorizontal="true"
-      />
+      android:textColor="@color/sumoshape_blue"
+      android:textSize="@dimen/player_score_text_size"
+      android:rotation="180"/>
 
   <LinearLayout
       android:orientation="horizontal"
@@ -107,7 +109,8 @@
       android:id="@+id/p2score"
       android:layout_above="@+id/p2controls"
       android:layout_centerHorizontal="true"
-      />
+      android:textColor="@color/sumoshape_red"
+      android:textSize="@dimen/player_score_text_size"/>
 
   <io.github.omgimanerd.sumoshapes.customviews.GameView
       android:layout_width="fill_parent"
